@@ -1,0 +1,27 @@
+setTimeout(()=>{
+    console.log(1)
+    Promise.resolve().then(()=>{
+        console.log(2)
+        setTimeout(()=>{
+            Promise.resolve().then(()=>{
+                console.log(3)
+                setTimeout(()=>{
+                    Promise.resolve().then(()=>{
+                        console.log(3.5)
+                    })
+                })
+            })
+        })
+    })
+})
+setTimeout(()=>{
+    console.log(4)
+    Promise.resolve().then(()=>{
+        console.log(5)
+        setTimeout(()=>{
+            Promise.resolve().then(()=>{
+                console.log(6)
+            })
+        })
+    })
+})

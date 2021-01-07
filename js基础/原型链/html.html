@@ -1,0 +1,67 @@
+<script>
+
+// isPrototypeOf  判断对象和实例的关系
+// in 判断一个对象是否含有该属性
+// hasOwnProperty  判断是否为原型对象上的属性
+
+
+
+
+Function.prototype.MyNew = function(name){
+    this.name = name;
+    return this;
+}
+
+Function.prototype.myCall = function(context, ...args) {
+    context = context || window
+    args = args ? args : []
+    //给context新增一个独一无二的属性以免覆盖原有属性
+    const key = Symbol()
+    context[key] = this   // this是调用的方法
+    console.log(args)
+    console.log(arguments)  //只有在函数调用时触发
+    //通过隐式绑定的方式调用函数
+    const result = context[key](...args)
+    //删除添加的属性
+    delete context[key]
+    //返回函数调用的返回值
+    return result
+}
+
+function Person(name,age) {
+    this.name = '张散'; 
+    this.age = 23;
+}
+function Big(){
+    this.big = 10
+}
+Function.prototype.Mycesh = function(){
+
+}
+
+Person.prototype.sing = function(){
+    console.log('哈哈哈')
+}
+
+let zs = new Person('张三',44);
+
+// 1、只有函数有 prototype 属性 ， constructor 只存在 prototype 中
+// 2、所有对象都有  __proto__（隐士原型链属性）
+
+
+// constructor
+console.log(zs)
+console.log(Function instanceof Object)
+console.log(Object instanceof Function)
+console.log(zs.prototype    ) 
+console.log(zs.constructor === Person)    
+console.log(zs.constructor.__proto__ === Function.prototype )
+console.log(zs.constructor.__proto__.__proto__ === Object.prototype )
+console.log(zs.__proto__ === Person.prototype)
+console.log(zs.__proto__.__proto__ === Object.prototype)
+// 实例的构造函数时对象
+//
+//
+//
+
+</script>

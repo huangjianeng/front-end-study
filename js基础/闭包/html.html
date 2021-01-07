@@ -1,0 +1,25 @@
+<script>
+    function Person(name,age) {
+    this.name = name; 
+    this.age = age;
+}
+
+
+Person.prototype.sing = function(){
+    console.log('哈哈哈')
+}
+Person.prototype = {
+    sing: function(){
+    console.log('哈哈哈')
+  }
+}
+
+function father(){
+    var name = 1;
+    name++
+    console.log(name)
+    // this.sing();
+}
+father()
+father()
+</script>

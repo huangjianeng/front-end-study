@@ -1,0 +1,2 @@
+变量先声明后赋值
+var val = 1;    ==》var val; val = 1
