@@ -20,6 +20,7 @@ Function.prototype.myCall = function(context, ...args) {
     //给context新增一个独一无二的属性以免覆盖原有属性
     const key = Symbol()
     context[key] = this   // this是调用的方法
+    console.log(this)
     console.log(args)
     console.log(arguments)  //只有在函数调用时触发
     //通过隐式绑定的方式调用函数

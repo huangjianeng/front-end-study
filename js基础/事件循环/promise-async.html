@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 10px;
+    }
+</style>
+<body>
+    <div id='dev' class="box">
+        box1
+    </div>
+
+    <div id='dev1' class="box">
+        box2
+    </div>
+    
+</body>
+</html>
+<!-- 
+1、成功或者失败，状态只有第一次返回的生效
+2、所有then函数都会执行
+3、
+-->
+<script>
+async function async1() {
+  console.log('async1 start')  
+  await async2()
+//   console.log(res)
+  console.log('async1 end') 
+}
+function async2() {
+  console.log('async2') 
+  return 'return async2'
+}
+async1()
+console.log('script start')
+setTimeout(function() {
+  console.log('setTimeout')
+}, 0)
+
+new Promise((resolve,reject) => {
+  console.log('resolve')
+//   resolve()
+reject('拒绝');
+})
+.then(function() {
+  console.log('promise1')
+})
+.then(function() {
+  console.log('promise2')
+})
+.catch(res=>{
+    console.log('catch',res)
+})
+</script>

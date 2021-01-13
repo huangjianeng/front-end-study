@@ -9,3 +9,11 @@ for(var i =0; i<5 ; i++){
     },1000)
 }
 
+
+
+var a = 1;
+(function a () {
+    'use strict';
+    a = 2;
+    console.log(a);
+})();

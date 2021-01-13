@@ -1,21 +1,15 @@
+setTimeout(function(){
+    console.log('定时器开始啦')
+});
 
-let a = 1
-const second = () => {
-    console.log('Hello there!')
-    a = 2
-  }
-  const first = () => {
-    console.log('Hi there!')
-    console.log(a)
-    second();
-    console.log(a)
-    console.log('The End')
-    for(let i = 0; i<=999999999;i++){
-        a = i
+new Promise(function(resolve){
+    console.log('马上执行for循环啦');
+    for(var i = 0; i < 10000; i++){
+        i == 99 && resolve();
     }
-    console.log(a)
-  }
-  first()
-  console.log('event')
+}).then(function(){
+    console.log('执行then函数啦')
+});
 
-//   执行栈的理解     后进先出   first函数先进栈,而second函数后进栈,second反而先出
+
+console.log('代码执行结束');

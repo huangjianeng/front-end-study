@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 10px;
+    }
+</style>
+<body>
+    <div id='dev' class="box">
+        box1
+    </div>
+
+    <div id='dev1' class="box">
+        box2
+    </div>
+    
+</body>
+</html>
+<!-- 
+1、成功或者失败，状态只有第一次返回的生效
+2、所有then函数都会执行
+-->
+<script>
+    let boxs = document.querySelector('#dev1')
+    setTimeout(()=>{
+        console.log('setTimeout1')
+    })
+    let a = new Promise((resolve,reject)=>{
+        reject('成功了');
+        setTimeout(()=>{
+            console.log('setTimeout2')
+        })
+        // reject('拒绝了');
+    }).then(resolve=>{
+        console.log('resolve',resolve)
+    },reject=>{
+        console.log('reject',reject)
+        return '1111'
+    }).then(resolve1=>{
+        console.log('resolve1',resolve1)
+    }).catch((a)=>{
+        console.log('catch',a)
+    }).finally((a)=>{
+        console.log('finally',a)
+    })
+    console.log(a)
+</script>

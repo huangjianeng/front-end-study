@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 10px;
+    }
+</style>
+<body>
+    <div id='dev' class="box">
+        box1
+    </div>
+<!-- 
+    <div id='dev1' class="box">
+        box2
+    </div> 
+-->
+    
+</body>
+</html>
+<!-- 
+1、成功或者失败，状态只有第一次返回的生效
+2、所有then函数都会执行
+3、
+-->
+<script>
+    async function fun(){
+        // return '1234'
+        setTimeout(()=>{
+            return 1
+        },100)
+    }
+    fun().then(res=>{
+        console.log(res)
+    })
+
+</script>

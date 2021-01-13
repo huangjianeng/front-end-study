@@ -1,0 +1,27 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // onreadystatechange
+        var xhr = new XMLHttpRequest();
+        console.log(xhr.readyState)
+        xhr.onreadystatechange = function () {
+            console.log('------')
+            console.log('readyState:' + xhr.readyState)
+            console.log('ResponseHeaders:' + xhr.getAllResponseHeaders())
+            console.log('ResponseText:' + xhr.responseText.length)
+            console.log('------')
+        }
+        xhr.open('get', '/')
+        xhr.send(null)
+    </script>
+</body>
+
+</html>

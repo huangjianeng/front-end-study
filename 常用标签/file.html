@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id='file' onchange="change()" type="file"  />
+    <label class="filelabel" for="file">上传文件</label>
+    <script>
+        function change(){
+			var file = document.getElementById('file')
+			console.log(file.__proto__)
+            console.log(file)
+        }
+
+        var arr = [
+					{
+						label:'image/png',
+						value:'png'
+					},
+					{
+						label:'image/jpeg',
+						value:'jpeg'
+					},
+					{
+						label:'image/jpg',
+						value:'jpg'
+					},
+					{
+						label:'application/pdf',
+						value:'pdf'
+					},
+					{
+						label:'application/msword',
+						value:'doc'
+					},
+					{
+						label:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+						value:'docx'
+					},
+					{
+						label:'application/vnd.ms-powerpoint',
+						value:'ppt'
+					},
+					{
+						label:'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+						value:'pptx'
+					},
+				]
+    </script>
+</body>
+</html>

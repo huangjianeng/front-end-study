@@ -1,9 +1,9 @@
 let permuteUnique =  function(arr){
    let result = []
    arr.forEach((v,i)=>{
-      if(){
-         dep(arr)
-      }
+      // if(){
+      //    dep(arr)
+      // }
    })
    function dep(arr){
       

@@ -15,9 +15,9 @@ let cat = {
 //  第一个参数都是调用方法的对象，      call和bind  后面必须传单个参数和多个参数，  
 //  apply 只接收数组参数
 //  bind  是返回一个函数，需要再次调用
-person.sing.call(cat,'aaa','bbb','ccc')   
-person.sing.apply(cat,['aaa','bbb','ccc'])
-person.sing.bind(cat,'aaa','bbb','ccc')()
+// person.sing.call(cat,'aaa','bbb','ccc')   
+// person.sing.apply(cat,['aaa','bbb','ccc'])
+// person.sing.bind(cat,'aaa','bbb','ccc')()
 
 Function.prototype.myApply = function (context, args) {
     //这里默认不传就是给window,也可以用es6给参数设置默认参数
@@ -36,11 +36,14 @@ Function.prototype.myApply = function (context, args) {
 
 
 
-function factorial(num){    
-    if (num <=1) {         
-       return 1;     
-    } else {         
-    return num * factorial(num-1)     
-    } 
- }
-console.log(factorial(5))
+// function factorial(num){    
+//     if (num <=1) {         
+//        return 1;     
+//     } else {         
+//     return num * factorial(num-1)     
+//     } 
+//  }
+// console.log(factorial(5))
+
+// let a = [1,2,3]
+// console.log(a)

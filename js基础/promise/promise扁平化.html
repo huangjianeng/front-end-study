@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 10px;
+        position: relative;
+    }
+</style>
+<body>
+    <div id='dev' class="box">
+        box1
+    </div>
+
+    <!-- <div id='dev1' class="box">
+        box2
+    </div> -->
+    
+</body>
+</html>
+<!-- 
+1、成功或者失败，状态只有第一次返回的生效
+2、所有then函数都会执行 
+-->
+<script>
+    function timefun(time = 1000, callBack){
+        return new Promise((resolve)=>{
+        let id = setInterval(() => {
+            callBack(id,resolve)
+            }, time);
+        })
+    };
+    let div = document.querySelector('.box');
+    timefun(100,(id,resolve)=>{
+        let left = parseInt(window.getComputedStyle(div).left)
+        console.log('轮询开始',left,div.style.left,typeof window.getComputedStyle(div).left)
+        if(left >= 200){
+            console.log(div.style.left)
+            clearInterval(id)
+            resolve(div) 
+        }
+        div.style.left = left + 10 + 'px'
+    }).then(div=>{
+        return timefun(100,(id,resolve)=>{
+            let width = parseInt(window.getComputedStyle(div).width)
+            
+            if(width <= 20){
+                clearInterval(id)
+                resolve(div) 
+            }
+            console.log('第二个轮询开始',width)
+            div.style.width = width - 10 + 'px'
+        })
+    }).then(div=>{
+        timefun(100,(id,resolve)=>{
+            clearInterval(id)
+            resolve(div) 
+            div.style.backgroundColor = 'green'
+        })
+    })
+
+</script>

@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  src="promise源码.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let p = new HD((resolve,reject)=>{
+        resolve('成功')
+       setTimeout(()=>{
+        console.log('setTimeout2')
+       },1000)
+    }).then(resolve=>{
+        console.log('resolve1',resolve)
+        return new HD((resolve)=>{
+            resolve('哈好')
+        })
+    }).then(resolve=>{
+        console.log('resolve1',resolve)
+    })
+    console.log(p)
+</script>
+</html>

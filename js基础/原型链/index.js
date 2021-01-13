@@ -25,12 +25,13 @@
 // 原型链的理解
 // 1、所有对象的原型都指向Object的原型
 // 2、对象的原型 prototype 上绑定的方法，他的每个对象都能继承到（prototype的地址指向是相同的）
-// 3、 函数的prototype的constructor  指向函数本身
+// 3、函数的prototype的constructor  指向函数本身
 
 
 
-// 例外  
+// 需要注意 
 // 1、Function.prototype === Function.__proto__   都指向  Function.prototype
 // 2、Object.__proto__ 指向 Function.prototype  
+// 3、Object.prototype 指向 null  
 let arr = []
 console.log(arr instanceof Array)

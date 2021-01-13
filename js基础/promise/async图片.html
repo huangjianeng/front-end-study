@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    body{
+        margin: 0;
+        width: 100%;
+    }
+    .box{
+        box-sizing: border-box;
+        width: 1px;
+        height: 200px;
+        background-color: red;
+        padding: 10px;
+        text-align: center;
+        
+    }
+</style>
+<body>
+    <div id='dev' class="box">
+        box1
+    </div>
+
+    <!-- <div id='dev1' class="box">
+        box2
+    </div> -->
+    
+</body>
+</html>
+<script>
+    function lodingImg(url){
+       return new Promise((resolve,reject)=>{
+            // let img = new Image();
+            let img = document.createElement('img')
+            img.src = url;
+            img.onload = ()=>{
+                resolve(img)
+            }
+            img.onerror = ()=>{
+                reject('图片加载失败')
+            };
+            document.body.appendChild(img)
+        });
+
+    }
+    lodingImg('./JS三种常见判断方式.png').then(resolve=>{
+        console.log('图片加载成功')
+        let div = document.getElementById('dev')
+        console.log(div)
+        div.innerHTML = '图片加载成功'
+        resolve.style.width = '200px'
+        let i = 0;
+        let id = setInterval(()=>{
+            if(++i ==100){
+                clearInterval(id)
+            }
+            div.innerHTML = i + '%'
+            div.style.width = i + '%'
+        },20)
+        
+    })
+    Promise.resolve('成功').then(res=>{
+        console.log('res',res)
+    }).then(res=>{
+        console.log('res1',res)
+    }).then(res=>{
+        console.log('res2',res)
+        Promise.resolve('111')
+    }).then(res=>{
+        console.log('res3',res)
+    })
+</script>
+<!-- 
+1、成功或者失败，状态只有第一次返回的生效
+2、所有then函数都会执行 
+-->
