@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script  src="promise20行.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    new newPromise((resolve)=>{
+        setTimeout(()=>{
+            resolve(222)
+        },100)
+    }).then(resolve=>{
+        console.log('resolve',resolve)
+    })
+
+</script>
+</html>

@@ -1,25 +1,63 @@
 <script>
-    function Person(name,age) {
-    this.name = name; 
-    this.age = age;
-}
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
 
 
-Person.prototype.sing = function(){
-    console.log('哈哈哈')
-}
-Person.prototype = {
-    sing: function(){
-    console.log('哈哈哈')
-  }
-}
+    Person.prototype.sing = function () {
+        console.log('哈哈哈')
+    }
+    Person.prototype = {
+        sing: function () {
+            console.log('哈哈哈')
+        }
+    }
 
-function father(){
-    var name = 1;
-    name++
-    console.log(name)
-    // this.sing();
-}
-father()
-father()
+    function father(name) {
+        var name = name;
+        return function () {
+            name++
+            return function () {
+                return ++name
+            }
+        }
+        // this.sing();
+    }
+    let a1 = father(100)()()
+    let a2 = father(10)()()
+    // console.log(a1)
+    // console.log(a2)
+
+
+    var Counter = (function () {
+        var privateCounter = 0;
+        function changeBy(val) {
+            privateCounter += val;
+        }
+        console.log('外部')
+        return {
+            increment: function (val) {
+                privateCounter += 1;
+            },
+            decrement: function (val) {
+                privateCounter += -1;
+            },
+            value: function () {
+                console.log(this)
+                return privateCounter;
+            }
+        }
+    })();
+    
+    let add = (function (){
+        let num = 0
+        return function(){
+            return ++num;
+        }
+    })()
+    // let add = add();
+    console.log(add())
+    console.log(add())
+    console.log(add())
 </script>

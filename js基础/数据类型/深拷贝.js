@@ -47,7 +47,15 @@ function deepCopy(data){
     }
     return res
 }
-console.log(deepClone1(obj))
-console.log(deepCopy(obj))
 
+
+let obj = {};
+function deepClone2(){
+    
+}
+
+let a = 1;
+let b = 2;
+let c = a+b;
+c
 

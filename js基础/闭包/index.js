@@ -12,8 +12,8 @@ for(var i =0; i<5 ; i++){
 
 
 var a = 1;
-(function a () {
-    'use strict';
-    a = 2;
-    console.log(a);
-})();
+// (function a () {
+//     'use strict';
+//     a = 2;
+//     console.log(a);
+// })();

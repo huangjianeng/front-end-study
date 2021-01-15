@@ -9,20 +9,59 @@
     
 </body>
 <script>
+    // var p1 = new Promise((resolve,reject)=>{
+    //     setTimeout(()=>{
+    //         resolve('111')
+    //     },200)
+    // })
+    // var p2 = new Promise((resolve,reject)=>{
+    //     setTimeout(()=>{
+    //         resolve('222')
+    //     },100)
+    // })
+    // var p3 = new Promise((resolve,reject)=>{
+    //     // resolve(3331)
+    //     // reject('333')
+    // })
+    // Promise.race([p1,p2,p3]).then(resolve=>{
+    //     console.log('resolve',resolve)
+    // }).catch(reject=>{
+    //     console.log('reject',reject)
+    // })
 
-    let p = new HD((resolve,reject)=>{
-        resolve('成功')
-       setTimeout(()=>{
-        console.log('setTimeout2')
-       },1000)
-    }).then(resolve=>{
-        console.log('resolve1',resolve)
-        return new HD((resolve)=>{
-            resolve('哈好')
-        })
-    }).then(resolve=>{
-        console.log('resolve1',resolve)
+
+    // let p = new HD((resolve,reject)=>{
+    //     resolve('成功')
+    //    setTimeout(()=>{
+    //     console.log('setTimeout2')
+    //    },1000)
+    // }).then(resolve=>{
+    //     console.log('resolve1',resolve)
+    //     return new HD((resolve)=>{
+    //         resolve('哈好')
+    //     })
+    // }).then(resolve=>{
+    //     console.log('resolve1',resolve)
+    // })
+    HD.resolve(2).then(res=>{
+        console.log('resolve-fun',res)
     })
-    console.log(p)
+
+
+
+
+    let p1 = new HD((resolve,reject)=>{
+        reject('111')
+    })
+    let p3 = new HD((resolve,reject)=>{
+        // resolve(3331)
+        reject('222')
+    })
+    HD.race([p1,p3]).then(res=>{
+        console.log(res)
+    },reject=>{
+        console.log(reject)
+    })
+    // console.log(p)
 </script>
 </html>

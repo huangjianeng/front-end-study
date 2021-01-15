@@ -2,12 +2,12 @@ class HD{
     static PENDING = 'pending';
     static FULFILLED = 'fulfilled'
     static REJECTED = 'rejected';
-    constructor(excutor){
+    constructor(executor){
         this.status = HD.PENDING;
         this.value = null;
         this.callBack = []  //处理构造函数的里面的异步函数
         try{
-            excutor(
+            executor(
                 this.resolve.bind(this),
                 this.reject.bind(this)
             )
@@ -34,7 +34,7 @@ class HD{
             this.value = value
             setTimeout(()=>{
                 this.callBack.forEach(callBack=>{
-                    callBack.onRejected(error)
+                    callBack.onRejected(value)
                 })
             })
         }
@@ -96,5 +96,51 @@ class HD{
         } catch (error) {
             reject(error)
         }
+    }
+    static resolve(value){
+       return new HD((resolve,reject)=>{
+            if(value instanceof HD){
+                value.then(resolve,reject)
+            }else{
+                resolve(value)
+            }
+        })
+    }
+    static reject(value){
+        new HD((resolve)=>{
+            reject(value)
+        })
+    }
+    static all(promises){
+        return new HD((resolve,reject)=>{
+            let resolves = []
+            promises.forEach(promise=>{
+                promise.then(
+                    value=>{
+                        resolves.push(value);
+                        if(resolves.length == promises.length){
+                            resolve(resolves)
+                        }
+                    },
+                    reason=>{
+                        reject(reason)
+                    }
+                )
+            })
+        })
+    }
+    static race(promises){
+        return new HD((resolve,reject)=>{
+            promises.forEach(promise=>{
+                promise.then(
+                    value=>{
+                        resolve(value)
+                    },
+                    reason=>{
+                        reject(reason)
+                    }
+                )
+            })
+        })
     }
 }
